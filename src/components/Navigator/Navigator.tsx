@@ -26,18 +26,26 @@ function Navigators() {
             elevation: 0,
             borderBottomColor: 'transparent'
           },
+          headerBackTitleVisible: false,
           headerRightContainerStyle: {
             alignItems: 'center'
           },
           headerLeftContainerStyle: {
-            alignItems: 'center'
+            alignItems: 'center',
+            paddingLeft: 20
           },
           headerTransparent: true
         }}
         initialRouteName="Welcome">
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="SignUp" component={SignUp} />
-        <Stack.Screen name="SignIn" component={SignIn} 
+        <Stack.Screen 
+        options={{
+           headerTitleContainerStyle: {
+             display: 'none'
+           }
+        }}
+        name="SignIn" component={SignIn} 
         />
         <Stack.Screen 
           options={{
