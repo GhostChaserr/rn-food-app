@@ -4,9 +4,6 @@ import { TouchableOpacity } from 'react-native-gesture-handler'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import styles from './WelcomStyles'
 
-import config from 'config'
-console.log(config)
-
 const {
   container,
   headerContainer,

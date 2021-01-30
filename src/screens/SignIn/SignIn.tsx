@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { SafeAreaView, KeyboardAvoidingView } from 'react-native'
 import { useForm, Controller } from 'react-hook-form'
-import { SignInFormData } from './SignInTypes'
+import { observer } from 'mobx-react-lite'
+import { UserStore } from 'src/store'
 
+import { SignInFormData } from './SignInTypes'
 import {
   StyledFormGroup,
   StyledFormWrapper,
@@ -20,25 +22,21 @@ import {
   StyledTouchableButton
 } from './SignInStyles'
 
-const SignIn = () => {
+const SignIn = observer(() => {
   const { control, handleSubmit, errors, setError } = useForm<SignInFormData>()
-  const [fieldErrors, setFieldErrors] = useState({
-    emailValid: true,
-    passwordValid: true
-  })
+  const { me, signIn, signUp } = useContext(UserStore)
+  const [fieldErrors, setFieldErrors] = useState({ emailValid: true, passwordValid: true })
 
-  const clearErrors = () =>
-    setTimeout(
-      () => setFieldErrors({ emailValid: true, passwordValid: true }),
-      2000
-    )
   const onSubmit = ({ email, password }: SignInFormData) => {
     console.log({ email, password })
+
+    // Populates state
+    signIn({ email: 'george', name: 'george' })
+    console.log(me)
 
     // Dynamic validation
     setError('email', { message: 'imail not valid' })
     setFieldErrors({ ...fieldErrors, emailValid: false })
-    clearErrors()
   }
 
   return (
@@ -119,6 +117,6 @@ const SignIn = () => {
       </KeyboardAvoidingView>
     </SafeAreaView>
   )
-}
+})
 
 export default SignIn
