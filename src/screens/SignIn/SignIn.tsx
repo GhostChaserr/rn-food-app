@@ -7,7 +7,6 @@ import {
   StyledFormGroup,
   StyledFormWrapper,
   StyledFormContainer,
-  StyledSubmitButton,
   SignInStyles,
   StyledErrorMessage,
   StyledTextInput,
@@ -15,10 +14,10 @@ import {
   StyledInputWrapper,
   StyledHeaderWrapper,
   StyledHeader,
-  StyledForgotPasswordWrapper,
   StyledForgotPassword,
   StyledTouchableOpacity,
-  StyledButtonText
+  StyledButtonText,
+  StyledTouchableButton
 } from './SignInStyles'
 
 const SignIn = () => {
@@ -105,9 +104,9 @@ const SignIn = () => {
             </StyledFormGroup>
 
             <StyledFormGroup>
-              <StyledTouchableOpacity onPress={handleSubmit(onSubmit)}>
+              <StyledTouchableButton onPress={handleSubmit(onSubmit)}>
                 <StyledButtonText> Login </StyledButtonText>
-              </StyledTouchableOpacity>
+              </StyledTouchableButton>
             </StyledFormGroup>
 
             <StyledFormGroup>

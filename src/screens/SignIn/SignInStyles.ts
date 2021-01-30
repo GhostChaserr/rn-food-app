@@ -3,6 +3,7 @@ import { TouchableHighlight } from 'react-native'
 
 
 
+
 export const StyledWrapper = styled.View`
   background-color: papayawhip;
 `
@@ -75,8 +76,16 @@ export const StyledTouchableOpacity = styled.TouchableOpacity`
   align-items: center;
 `
 
+export const StyledTouchableButton = styled.TouchableOpacity`
+  background-color: green;
+  align-items: center;
+  padding: 15px;
+  border-radius: 5px;
+`
+
 export const StyledButtonText = styled.Text`
   font-weight: bold;
+  color: white;
 
 `
 
