@@ -4,6 +4,9 @@ import { TouchableOpacity } from 'react-native-gesture-handler'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import styles from './WelcomStyles'
 
+import config from 'config'
+console.log(config)
+
 const {
   container,
   headerContainer,
@@ -27,6 +30,9 @@ const illustrations = [
 const { width, height } = Dimensions.get('window')
 
 const Welcome = ({ navigation }: any) => {
+  const handleSignIn = () => navigation.navigate('SignIn')
+  const handleSignUp = () => navigation.navigate('SignUp')
+
   return (
     <SafeAreaView style={container}>
       <View style={headerContainer}>
@@ -63,10 +69,10 @@ const Welcome = ({ navigation }: any) => {
       </View>
 
       <View style={loginButtonWrapper}>
-        <TouchableOpacity style={button}>
+        <TouchableOpacity onPress={handleSignIn}  style={button}>
           <Text style={buttonText}> Signin </Text>
         </TouchableOpacity>
-        <TouchableOpacity style={button}>
+        <TouchableOpacity onPress={handleSignUp} style={button}>
           <Text style={buttonText}> Signup </Text>
         </TouchableOpacity>
       </View>
@@ -78,16 +84,6 @@ const Welcome = ({ navigation }: any) => {
       </View>
     </SafeAreaView>
   )
-}
-
-{
-  /* <Text>Welcom screen!</Text>
-<View>
-  <Button
-    title="Go to Details"
-    onPress={() => navigation.navigate('Home')}
-  />
-</View> */
 }
 
 export default Welcome
