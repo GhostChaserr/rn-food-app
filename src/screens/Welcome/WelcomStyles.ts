@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
     flex: 1
   },
   headerContainer: {
-    height: 80,
+    height: 50,
     justifyContent: 'center',
     alignItems: 'flex-end',
     flexDirection: 'row'
@@ -71,7 +71,8 @@ const styles = StyleSheet.create({
   },
   termsButton: {
     width,
-    alignItems: 'center'
+    alignItems: 'center',
+    padding: 20
   }
 })
 

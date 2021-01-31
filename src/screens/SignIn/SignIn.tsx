@@ -4,6 +4,7 @@ import { useForm, Controller } from 'react-hook-form'
 import { observer } from 'mobx-react-lite'
 import { UserStore } from 'src/store'
 
+import GlobalStyles from 'src/global.styles'
 import { SignInFormData } from './SignInTypes'
 import {
   StyledFormGroup,
@@ -38,7 +39,7 @@ const SignIn = observer(() => {
   }
 
   return (
-    <SafeAreaView style={SignInStyles.signIn}>
+    <SafeAreaView style={GlobalStyles.adroidSafeArea}>
       <KeyboardAvoidingView style={SignInStyles.signIn}>
         <StyledFormWrapper>
           <StyledHeaderWrapper>

@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import { observer } from 'mobx-react-lite'
 import { categoriesMocks } from './mocks'
 
+import GlobalStyles from 'src/global.styles'
 import {
-  StyledKeywordAvoidView,
   StyledSafeAreaView,
   StyledTopHeaderWrapper,
   StyledWrapper,
@@ -52,46 +52,44 @@ const Browse = observer(({ navigation }: any) => {
   }
 
   return (
-    <StyledSafeAreaView>
-      <StyledKeywordAvoidView>
-        <StyledWrapper>
-          <StyledTopHeaderWrapper>
-            <StyledTopHeader>
-              <StyledTopHeaderText>Browse</StyledTopHeaderText>
-            </StyledTopHeader>
-            <StyledAvatarWrapper>
-              <StyledAvatar
-                source={{
-                  uri:
-                    'https://www.uidownload.com/files/790/68/996/free-set-of-material-design-avatars.png'
-                }}
-              ></StyledAvatar>
-            </StyledAvatarWrapper>
-          </StyledTopHeaderWrapper>
-          <StyledTabWrapper>
-            {tabs.map((tab: string) => renderTab(tab))}
-          </StyledTabWrapper>
+    <StyledSafeAreaView style={GlobalStyles.adroidSafeArea}>
+      <StyledWrapper>
+        <StyledTopHeaderWrapper>
+          <StyledTopHeader>
+            <StyledTopHeaderText>Browse</StyledTopHeaderText>
+          </StyledTopHeader>
+          <StyledAvatarWrapper>
+            <StyledAvatar
+              source={{
+                uri:
+                  'https://www.uidownload.com/files/790/68/996/free-set-of-material-design-avatars.png'
+              }}
+            ></StyledAvatar>
+          </StyledAvatarWrapper>
+        </StyledTopHeaderWrapper>
+        <StyledTabWrapper>
+          {tabs.map((tab: string) => renderTab(tab))}
+        </StyledTabWrapper>
 
-          <StyledScrollView showsVerticalScrollIndicator={false}>
-            <StyledTabContentWrapper>
-              {categoriesMocks.map((category: any) => (
-                <StyledTabCardButton
-                  onPress={() => navigation.navigate('SignIn')}
-                  key={category.id}
-                >
-                  <StyledTabCard>
-                    <StyledTabCardImage source={category.image} />
-                    <StyledTabCardHeader>{category.name}</StyledTabCardHeader>
-                    <StyledTabCardSubHeader>
-                      {category.count} products
-                    </StyledTabCardSubHeader>
-                  </StyledTabCard>
-                </StyledTabCardButton>
-              ))}
-            </StyledTabContentWrapper>
-          </StyledScrollView>
-        </StyledWrapper>
-      </StyledKeywordAvoidView>
+        <StyledScrollView showsVerticalScrollIndicator={false}>
+          <StyledTabContentWrapper>
+            {categoriesMocks.map((category: any) => (
+              <StyledTabCardButton
+                onPress={() => navigation.navigate('SignIn')}
+                key={category.id}
+              >
+                <StyledTabCard>
+                  <StyledTabCardImage source={category.image} />
+                  <StyledTabCardHeader>{category.name}</StyledTabCardHeader>
+                  <StyledTabCardSubHeader>
+                    {category.count} products
+                  </StyledTabCardSubHeader>
+                </StyledTabCard>
+              </StyledTabCardButton>
+            ))}
+          </StyledTabContentWrapper>
+        </StyledScrollView>
+      </StyledWrapper>
     </StyledSafeAreaView>
   )
 })

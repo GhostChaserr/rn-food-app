@@ -20,14 +20,12 @@ function Navigators() {
     <NavigationContainer>
       <Stack.Navigator 
         screenOptions={{
-          headerShown: true,
+          headerShown: false,
           headerBackImage: HeaderImage,
           headerStyle: {
-            height: 80,
             elevation: 0,
             borderBottomColor: 'transparent'
           },
-          headerBackTitleVisible: false,
           headerRightContainerStyle: {
             alignItems: 'center'
           },
@@ -50,6 +48,7 @@ function Navigators() {
         />
         <Stack.Screen 
         options={{
+           headerBackTitleVisible: false,
            headerTitleContainerStyle: {
              display: 'none'
            }

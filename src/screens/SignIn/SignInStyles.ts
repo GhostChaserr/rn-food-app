@@ -21,6 +21,8 @@ export const StyledFormWrapper = styled.View`
   flex: 1;
   justify-content: space-between;
   padding: 10px;
+  border-color: red;
+  border-width: 1px;
 `
 
 export const StyledFormContainer = styled.View`

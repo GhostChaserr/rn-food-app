@@ -44,6 +44,7 @@ export const StyledAvatar = styled.Image`
 
 export const StyledTabWrapper = styled.View`
   flex-direction: row;
+  justify-content: space-evenly;
 `
 
 export const StyledTabButton = styled.TouchableOpacity<{ tab: string, isActive: boolean }>`
