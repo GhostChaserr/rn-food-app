@@ -28,7 +28,7 @@ const { width, height } = Dimensions.get('window')
 
 const Welcome = ({ navigation }: any) => {
   const handleSignIn = () => navigation.navigate('SignIn')
-  const handleSignUp = () => navigation.navigate('SignUp')
+  const handleSignUp = () => navigation.navigate('Browse')
 
   return (
     <SafeAreaView style={container}>

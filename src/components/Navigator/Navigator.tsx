@@ -7,6 +7,7 @@ import Home from 'src/screens/Home'
 import SignUp from 'src/screens/SignUp'
 import SignIn from 'src/screens/SignIn'
 import Welcome from 'src/screens/Welcome'
+import Browse from 'src/screens/Browse'
 
 const HeaderImage = () => {
   return <Image source={require('src/assets/icons/back.png')} />
@@ -39,6 +40,14 @@ function Navigators() {
         initialRouteName="Welcome">
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="SignUp" component={SignUp} />
+        <Stack.Screen 
+          options={{
+            headerTitleContainerStyle: {
+              display: 'none'
+            }
+          }}
+          name="Browse" component={Browse} 
+        />
         <Stack.Screen 
         options={{
            headerTitleContainerStyle: {

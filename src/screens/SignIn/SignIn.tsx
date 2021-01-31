@@ -32,8 +32,6 @@ const SignIn = observer(() => {
 
     // Populates state
     signIn({ email: 'george', name: 'george' })
-    console.log(me)
-
     // Dynamic validation
     setError('email', { message: 'imail not valid' })
     setFieldErrors({ ...fieldErrors, emailValid: false })
