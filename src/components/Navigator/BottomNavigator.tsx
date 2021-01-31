@@ -19,7 +19,6 @@ const BottomTabs = () => {
           bottom: 0,
           right: 0,
           borderTopWidth: 0,
-          backgroundColor: 'transparent',
           elevation: 0
         }
       }}

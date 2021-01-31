@@ -2,8 +2,7 @@ import * as React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 
-import Home from 'src/screens/Home'
-import BottomTabs from 'src/screens/Home/BottomTabs'
+import BottomNavigator from './BottomNavigator'
 const Stack = createStackNavigator()
 
 function Navigators() {
@@ -16,7 +15,7 @@ function Navigators() {
             headerShown: false
           }}
           name="Home" 
-          component={BottomTabs} 
+          component={BottomNavigator} 
         />
       </Stack.Navigator>
     </NavigationContainer>
