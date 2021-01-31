@@ -1,22 +1,22 @@
 import * as React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
-import Welcome from 'src/screens/Welcome'
 
-
+import Home from 'src/screens/Home'
+import BottomTabs from 'src/screens/Home/BottomTabs'
 const Stack = createStackNavigator()
 
 function Navigators() {
   return (
     <NavigationContainer>
       <Stack.Navigator 
-        initialRouteName="Welcome">
+        initialRouteName="Home">
         <Stack.Screen 
           options={{
             headerShown: false
           }}
-          name="Welcome" 
-          component={Welcome} 
+          name="Home" 
+          component={BottomTabs} 
         />
       </Stack.Navigator>
     </NavigationContainer>

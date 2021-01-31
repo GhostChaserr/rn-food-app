@@ -1,10 +1,36 @@
 import React from 'react'
-import { View, Text } from 'react-native'
 import 'react-native-gesture-handler'
 import Navigator from './src/components/Navigator'
+import { enableScreens } from 'react-native-screens'
+import * as Font from 'expo-font';
+enableScreens()
 
-const App = () => {
-  return <Navigator />
+export default class App extends React.Component {
+  state = {
+    fontsLoaded: false,
+  }
+  
+  async loadFonts() {
+    await Font.loadAsync({
+      RobotoCondensedRegular: require('src/assets/fonts/RobotoCondensed-Regular.ttf'),
+      RobotoCondensedLightItalic: require('src/assets/fonts/RobotoCondensed-LightItalic.ttf'),
+      RobotoCondensedLight: require('src/assets/fonts/RobotoCondensed-Light.ttf'),
+    });
+    this.setState({ fontsLoaded: true });
+  }
+
+  componentDidMount() {
+    this.loadFonts();
+  }
+
+  render() {
+    // Use the font with the fontFamily property after loading
+    if (this.state.fontsLoaded) {
+      return (
+        <Navigator/>
+      );
+    } else {
+      return null;
+    }
+  }
 }
-
-export default App
