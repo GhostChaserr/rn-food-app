@@ -5,6 +5,8 @@ import { icons } from 'src/constants'
 import Restaurant from 'src/components/Restaurant'
 import { categoryData, restaurantData } from './mocks'
 
+
+import { RestaurantCategory } from './HomeTypes'
 import {
   StyledSafeAreaView,
   StyledHeaderWrapper,
@@ -25,35 +27,30 @@ import {
   StyledRestaurantsFeedWrapper
 } from './HomeStyles'
 
-const Home = () => {
-  const [restaurants, setRestaurants] = useState<any>(restaurantData)
-  const [categories, setCategoris] = useState(categoryData)
+const Home = ({ navigation }: any) => {
+  const [categories] = useState(categoryData)
   const [selectedCategory, setSelectedCategory] = React.useState<any>(null)
 
-  const onCategorySelect = (category: any) => setSelectedCategory(category)
+  const onCategorySelect = (category: RestaurantCategory) => setSelectedCategory(category)
 
-  const renderCategory = ({ item }: any) => {
-    const isSelected = selectedCategory?.id == item.id
+  const renderCategory = ({ item }: { item: any }) => {
+    const restaurantCategory: RestaurantCategory = item;
+    const isSelected = selectedCategory?.id == restaurantCategory.id
     return (
-      <StyledCategoryButton
-        isSelected={isSelected}
-        onPress={() => onCategorySelect(item)}
-      >
+      <StyledCategoryButton isSelected={isSelected} onPress={() => onCategorySelect(item)}>
         <StyledCategoryWrapper>
-          <StyledCategoryIcon source={item.icon} />
+          <StyledCategoryIcon source={restaurantCategory.icon} />
         </StyledCategoryWrapper>
         <StyledCategoryTextWrapper>
           <StyledCategoryText isSelected={isSelected}>
-            {item.name}
+            {restaurantCategory.name}
           </StyledCategoryText>
         </StyledCategoryTextWrapper>
       </StyledCategoryButton>
     )
   }
 
-  const renderRestaurant = ({ item }: any) => {
-    return <Restaurant  {...item} />
-  }
+  const renderRestaurant = ({ item }: any) => <Restaurant navigation={navigation} {...item} />
 
   return (
     <StyledSafeAreaView style={GlobalStyles.adroidSafeArea}>
@@ -83,14 +80,14 @@ const Home = () => {
             data={categories}
             horizontal
             showsHorizontalScrollIndicator={false}
-            keyExtractor={(item: any) => `${item.id}`}
+            keyExtractor={(item: RestaurantCategory | any) => `${item.id}`}
             renderItem={renderCategory}
           />
         </StyledCategoriesContainer>
         <StyledRestaurantsFeedWrapper>
           <StyledFlatList
             data={restaurantData}
-            keyExtractor={(item: any) => `${item.id}`}
+            keyExtractor={(item: RestaurantCategory | any) => `${item.id}`}
             renderItem={renderRestaurant}
           />
         </StyledRestaurantsFeedWrapper>

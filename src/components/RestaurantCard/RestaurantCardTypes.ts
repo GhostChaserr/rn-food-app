@@ -1,6 +1,6 @@
 
 
-export type RestaurantPtops ={
+export type RestaurantCardProps ={
   photo: any
   name: string
   rating: number 

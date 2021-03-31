@@ -27,7 +27,7 @@ const BottomTabs = () => {
         name="Home"
         component={Home}
         options={{
-          tabBarIcon: ({ focused }) => (
+          tabBarIcon: ({ focused }: { focused: boolean }) => (
             <Image
               source={icons.cutlery}
               style={{
@@ -44,7 +44,7 @@ const BottomTabs = () => {
         name="Search"
         component={Home}
         options={{
-          tabBarIcon: ({ focused }) => (
+          tabBarIcon: ({ focused }: { focused: boolean }) => (
             <Image
               source={icons.search}
               resizeMode="contain"
@@ -62,7 +62,7 @@ const BottomTabs = () => {
         name="Like"
         component={Home}
         options={{
-          tabBarIcon: ({ focused }) => (
+          tabBarIcon: ({ focused }: { focused: boolean }) => (
             <Image
               source={icons.like}
               resizeMode="contain"
@@ -80,7 +80,7 @@ const BottomTabs = () => {
         name="User"
         component={Home}
         options={{
-          tabBarIcon: ({ focused }) => (
+          tabBarIcon: ({ focused }: { focused: boolean }) => (
             <Image
               source={icons.user}
               resizeMode="contain"

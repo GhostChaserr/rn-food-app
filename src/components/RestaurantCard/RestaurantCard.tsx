@@ -1,7 +1,7 @@
 import React, { memo } from 'react'
 import { icons } from 'src/constants'
 
-import { RestaurantPtops } from './RestaurantTypes'
+import { RestaurantCardProps } from './RestaurantCardTypes'
 import {
   StyledTouchableView,
   StyledRestaurantImgWrapper,
@@ -14,9 +14,9 @@ import {
   StyledRestaurantMetaInfoContainer,
   StyledRestaurantMetaInfoText,
   StyledStarIcon
-} from './RestaurantStyles'
+} from './RestaurantCardStyles'
 
-const Restaurant = ({ photo, name, rating, id, navigation }: RestaurantPtops) => {
+const RestaurantCard = ({ photo, name, rating, id, navigation }: RestaurantCardProps) => {
   const handleRestaurantOpen = () => navigation.navigate('Restaurant', { restaurantId: id })
   return (
     <StyledTouchableView onPress={handleRestaurantOpen}>
@@ -56,4 +56,4 @@ const Restaurant = ({ photo, name, rating, id, navigation }: RestaurantPtops) =>
   )
 }
 
-export default memo(Restaurant)
+export default memo(RestaurantCard)

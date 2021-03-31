@@ -9,9 +9,11 @@ export default class App extends React.Component {
   state = {
     fontsLoaded: false,
   }
+  // Roboto-regular
   
   async loadFonts() {
     await Font.loadAsync({
+      RobotoRegular: require('src/assets/fonts/Roboto-Regular.ttf'),
       RobotoCondensedRegular: require('src/assets/fonts/RobotoCondensed-Regular.ttf'),
       RobotoCondensedLightItalic: require('src/assets/fonts/RobotoCondensed-LightItalic.ttf'),
       RobotoCondensedLight: require('src/assets/fonts/RobotoCondensed-Light.ttf'),
