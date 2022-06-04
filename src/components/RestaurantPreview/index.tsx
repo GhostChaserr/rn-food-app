@@ -1,7 +1,9 @@
-import React, { memo } from 'react'
+import React, { FC } from 'react'
+import { ImageSourcePropType } from 'react-native'
 import { icons } from 'src/constants'
+import { RestaurantMenuT } from 'src/types'
+import { APP_SCREENS } from '../Navigator/Navigator'
 
-import { RestaurantPtops } from './RestaurantTypes'
 import {
   StyledTouchableView,
   StyledRestaurantImgWrapper,
@@ -14,38 +16,47 @@ import {
   StyledRestaurantMetaInfoContainer,
   StyledRestaurantMetaInfoText,
   StyledStarIcon
-} from './RestaurantStyles'
+} from './styles'
 
-const Restaurant = ({ photo, name, rating, id, navigation }: RestaurantPtops) => {
-  const handleRestaurantOpen = () => navigation.navigate('Restaurant', { restaurantId: id })
+export type RestaurantProps ={
+  data: {
+    photo: ImageSourcePropType
+    name: string
+    rating: number 
+    id: number
+    menu: RestaurantMenuT[]
+    duration: string
+  }
+  navigation?: any
+}
+
+const RestaurantPreview: FC<RestaurantProps> = (props) => {
+  const handleRestaurantOpen = () => props.navigation.navigate(APP_SCREENS.RESTAURANT, { restaurantId: props.data.id })
   return (
     <StyledTouchableView onPress={handleRestaurantOpen}>
       <React.Fragment>
         <StyledRestaurantImgWrapper>
-          <StyledRestaurantImg source={photo} />
+          <StyledRestaurantImg source={props.data.photo} />
           <StyledDeliveryTimeWrapper>
-            <StyledDeliveryTimeText> 25min </StyledDeliveryTimeText>
+            <StyledDeliveryTimeText> {props.data.duration} min </StyledDeliveryTimeText>
           </StyledDeliveryTimeWrapper>
         </StyledRestaurantImgWrapper>
         <StyledRestaurantMetaWrapper>
-          <StyledRestaurantMetaHeader>{name}</StyledRestaurantMetaHeader>
+          <StyledRestaurantMetaHeader>{props.data.name}</StyledRestaurantMetaHeader>
           <StyledRestaurantMetaInfoWrapper>
             <StyledRestaurantMetaInfoContainer>
               <StyledStarIcon source={icons.star} />
               <StyledRestaurantMetaInfoText>
-                {rating}
+                {props.data.rating}
               </StyledRestaurantMetaInfoText>
             </StyledRestaurantMetaInfoContainer>
-            <StyledRestaurantMetaInfoContainer style={{ marginLeft: 0 }}>
-              <StyledRestaurantMetaInfoText>
-                burgers
-              </StyledRestaurantMetaInfoText>
-            </StyledRestaurantMetaInfoContainer>
-            <StyledRestaurantMetaInfoContainer>
-              <StyledRestaurantMetaInfoText>
-                snacks
-              </StyledRestaurantMetaInfoText>
-            </StyledRestaurantMetaInfoContainer>
+            {props.data.menu.slice(0, 2).map(item => (
+              <StyledRestaurantMetaInfoContainer key={item.menuId} style={{ marginLeft: 0 }}>
+                <StyledRestaurantMetaInfoText>
+                  {item.name}
+                </StyledRestaurantMetaInfoText>
+              </StyledRestaurantMetaInfoContainer>
+            ))}
             <StyledRestaurantMetaInfoContainer>
               <StyledRestaurantMetaInfoText>$200</StyledRestaurantMetaInfoText>
             </StyledRestaurantMetaInfoContainer>
@@ -56,4 +67,4 @@ const Restaurant = ({ photo, name, rating, id, navigation }: RestaurantPtops) =>
   )
 }
 
-export default memo(Restaurant)
+export default RestaurantPreview;

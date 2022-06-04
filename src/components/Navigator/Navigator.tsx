@@ -5,6 +5,10 @@ import { createStackNavigator } from '@react-navigation/stack';
 import BottomNavigator from './BottomNavigator'
 import Restaurant from 'src/screens/Restaurant'
 
+export const APP_SCREENS = {
+  RESTAURANT: 'RESTAURANT',
+  HOME: 'HOME'
+}
 
 const Stack = createStackNavigator()
 
@@ -17,12 +21,12 @@ function Navigators() {
           options={{
             headerShown: false
           }}
-          name="Home" 
+          name={APP_SCREENS.HOME}
           component={BottomNavigator} 
         />
         <Stack.Screen 
           options={{ headerShown: false }}
-          name="Restaurant" 
+          name={APP_SCREENS.RESTAURANT} 
           component={Restaurant} 
         />
       </Stack.Navigator>

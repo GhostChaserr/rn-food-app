@@ -5,7 +5,7 @@ import Animated from 'react-native-reanimated'
 
 import Header from 'src/components/Header'
 import Layout from 'src/components/Layout'
-import Menu   from  'src/components/Menu'
+import Menu  from  'src/components/Menu'
 
 import { restaurantData } from '../Home/mocks'
 import { RestaurantMenu } from './RestaurantTypes'

@@ -2,11 +2,11 @@ import React, { useState } from 'react'
 import GlobalStyles from 'src/global.styles'
 import { icons } from 'src/constants'
 
-import Restaurant from 'src/components/Restaurant'
+import { RestaurantPreviewT } from 'src/types'
+import { RestaurantCategory, RestaurantPreview } from 'src/components'
+import { RestaurantCategoryT } from 'src/components/RestaurantCategory'
 import { categoryData, restaurantData } from './mocks'
 
-
-import { RestaurantCategory } from './HomeTypes'
 import {
   StyledSafeAreaView,
   StyledHeaderWrapper,
@@ -18,11 +18,6 @@ import {
   StyledHeadingsWrapper,
   StyledHeadingsHeader,
   StyledCategoriesContainer,
-  StyledCategoryButton,
-  StyledCategoryWrapper,
-  StyledCategoryIcon,
-  StyledCategoryTextWrapper,
-  StyledCategoryText,
   StyledFlatList,
   StyledRestaurantsFeedWrapper
 } from './HomeStyles'
@@ -31,26 +26,38 @@ const Home = ({ navigation }: any) => {
   const [categories] = useState(categoryData)
   const [selectedCategory, setSelectedCategory] = React.useState<any>(null)
 
-  const onCategorySelect = (category: RestaurantCategory) => setSelectedCategory(category)
+  const onCategorySelect = (category: RestaurantCategoryT) =>
+    setSelectedCategory(category)
 
   const renderCategory = ({ item }: { item: any }) => {
-    const restaurantCategory: RestaurantCategory = item;
-    const isSelected = selectedCategory?.id == restaurantCategory.id
+    const restaurantCategory: RestaurantCategoryT = item
     return (
-      <StyledCategoryButton isSelected={isSelected} onPress={() => onCategorySelect(item)}>
-        <StyledCategoryWrapper>
-          <StyledCategoryIcon source={restaurantCategory.icon} />
-        </StyledCategoryWrapper>
-        <StyledCategoryTextWrapper>
-          <StyledCategoryText isSelected={isSelected}>
-            {restaurantCategory.name}
-          </StyledCategoryText>
-        </StyledCategoryTextWrapper>
-      </StyledCategoryButton>
+      <RestaurantCategory
+        selected={selectedCategory?.id == restaurantCategory.id}
+        icon={restaurantCategory.icon}
+        onCategorySelect={onCategorySelect}
+        id={restaurantCategory.id}
+        name={restaurantCategory.name}
+      />
     )
   }
 
-  const renderRestaurant = ({ item }: any) => <Restaurant navigation={navigation} {...item} />
+  const renderRestaurantPreview = ({ item }: { item: any }) => {
+    const restaurant: RestaurantPreviewT = item
+    return (
+      <RestaurantPreview
+        navigation={navigation}
+        data={{
+          menu: restaurant.menu,
+          duration: restaurant.duration,
+          name: restaurant.name,
+          id: restaurant.id,
+          rating: restaurant.rating,
+          photo: restaurant.photo
+        }}
+      />
+    )
+  }
 
   return (
     <StyledSafeAreaView style={GlobalStyles.adroidSafeArea}>
@@ -80,15 +87,15 @@ const Home = ({ navigation }: any) => {
             data={categories}
             horizontal
             showsHorizontalScrollIndicator={false}
-            keyExtractor={(item: RestaurantCategory | any) => `${item.id}`}
+            keyExtractor={(item: RestaurantCategoryT | any) => `${item.id}`}
             renderItem={renderCategory}
           />
         </StyledCategoriesContainer>
         <StyledRestaurantsFeedWrapper>
           <StyledFlatList
             data={restaurantData}
-            keyExtractor={(item: RestaurantCategory | any) => `${item.id}`}
-            renderItem={renderRestaurant}
+            keyExtractor={(item: RestaurantPreviewT | any) => `${item.id}`}
+            renderItem={renderRestaurantPreview}
           />
         </StyledRestaurantsFeedWrapper>
       </StyledContentWrapper>
