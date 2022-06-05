@@ -2,13 +2,13 @@ import React  from 'react'
 import { icons } from 'src/constants'
 import Animated from 'react-native-reanimated'
 
-
 import Header from 'src/components/Header'
 import Layout from 'src/components/Layout'
-import Menu  from  'src/components/Menu'
+
+import { RestaurantMenu } from 'src/components'
+import { RestaurantMenuT } from 'src/types'
 
 import { restaurantData } from '../Home/mocks'
-import { RestaurantMenu } from './RestaurantTypes'
 import { StyledFoodInfoWrapper } from './RestaurantStyles'
 
 const Restaurant = ({ route, navigation }: any) => {
@@ -40,10 +40,9 @@ const Restaurant = ({ route, navigation }: any) => {
           snapToAlignment={'start'}
           showsHorizontalScrollIndicator={false}
         >
-          {restaurant.menu.map((menu: RestaurantMenu) => (
-            <Menu 
+          {restaurant.menu.map((menu: RestaurantMenuT) => (
+            <RestaurantMenu
               key={menu.menuId}
-              restaurantId={route.params.restaurantId}
               photo={menu.photo} 
               description={menu.description} 
               name={menu.name} 

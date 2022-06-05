@@ -2,8 +2,8 @@ import React from 'react'
 import { Image } from 'react-native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { theme, icons } from 'src/constants'
-
 import Home from 'src/screens/Home'
+import TabBarButton from '../TabBarButton'
 
 const Tab = createBottomTabNavigator()
 const { COLORS } = theme
@@ -19,6 +19,7 @@ const BottomTabs = () => {
           bottom: 0,
           right: 0,
           borderTopWidth: 0,
+          backgroundColor: 'transparent',
           elevation: 0
         }
       }}
@@ -36,7 +37,16 @@ const BottomTabs = () => {
                 tintColor: focused ? COLORS.primary : COLORS.secondary
               }}
             />
-          )
+          ),
+          tabBarButton: (props) => {
+            return (
+              <TabBarButton
+                children={props.children}
+                selected={props.accessibilityState?.selected}
+                onPress={props.onPress}
+              />
+            )
+          }
         }}
       />
 
@@ -55,6 +65,15 @@ const BottomTabs = () => {
               }}
             />
           ),
+          tabBarButton: (props) => {
+            return (
+              <TabBarButton
+                children={props.children}
+                selected={props.accessibilityState?.selected}
+                onPress={props.onPress}
+              />
+            )
+          }
         }}
       />
 
@@ -73,6 +92,15 @@ const BottomTabs = () => {
               }}
             />
           ),
+          tabBarButton: (props) => {
+            return (
+              <TabBarButton
+                children={props.children}
+                selected={props.accessibilityState?.selected}
+                onPress={props.onPress}
+              />
+            )
+          }
         }}
       />
 
@@ -91,6 +119,15 @@ const BottomTabs = () => {
               }}
             />
           ),
+          tabBarButton: (props) => {
+            return (
+              <TabBarButton
+                children={props.children}
+                selected={props.accessibilityState?.selected}
+                onPress={props.onPress}
+              />
+            )
+          }
         }}
       />
     </Tab.Navigator>
